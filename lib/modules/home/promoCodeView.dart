@@ -83,13 +83,8 @@ class _PromoCodeViewState extends State<PromoCodeView> {
                           ),
                           Expanded(
                             child: TextField(
-                              // controller: emailController,
                               maxLines: 1,
                               onChanged: (String txt) {},
-                              // style: TextStyle(
-                              //   // fontSize: 16,
-                              // ),
-                              // enabled: _isEditing,
                               cursorColor: Theme.of(context).primaryColor,
                               decoration: new InputDecoration(
                                 errorText: null,

@@ -30,7 +30,7 @@ class CoustomTheme {
       subtitle2: GoogleFonts.montserrat(
         textStyle: TextStyle(
           color: base.subtitle2.color,
-           fontSize: 16,
+          fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
       ),
@@ -47,22 +47,13 @@ class CoustomTheme {
         ),
       ),
       button: GoogleFonts.montserrat(
-        textStyle: TextStyle(
-          color: base.button.color,
-    fontSize: 14, fontWeight: FontWeight.w600
-        ),
+        textStyle: TextStyle(color: base.button.color, fontSize: 14, fontWeight: FontWeight.w600),
       ),
       caption: GoogleFonts.montserrat(
-        textStyle: TextStyle(
-          color: base.caption.color,
-          fontSize: 12
-        ),
+        textStyle: TextStyle(color: base.caption.color, fontSize: 12),
       ),
       headline4: GoogleFonts.montserrat(
-        textStyle: TextStyle(
-          color: base.headline4.color,
-       fontSize: 34
-        ),
+        textStyle: TextStyle(color: base.headline4.color, fontSize: 34),
       ),
       headline3: GoogleFonts.montserrat(
         textStyle: TextStyle(
@@ -109,9 +100,7 @@ class CoustomTheme {
       buttonColor: primaryColor,
       indicatorColor: Colors.white,
       accentColor: primaryColor,
-      // canvasColor: const Color(0xFF202124),
       scaffoldBackgroundColor: const Color(0xFF212121),
-      // backgroundColor: const Color(0xFF202124),
       errorColor: const Color(0xFFB00020),
       buttonTheme: _buttonThemeData(colorScheme),
       dialogTheme: _dialogTheme(),
@@ -131,20 +120,15 @@ class CoustomTheme {
     );
     final ThemeData base = ThemeData.light();
     return base.copyWith(
-      // cupertinoOverrideTheme: _buildCupertinoTheme(base.cupertinoOverrideTheme),
       colorScheme: colorScheme,
       primaryColor: primaryColor,
       buttonColor: primaryColor,
-      // indicatorColor: Colors.white,
       splashColor: Colors.white38,
       splashFactory: InkRipple.splashFactory,
       accentColor: primaryColor,
-      // canvasColor: Colors.white,
-      // scaffoldBackgroundColor: const Color(0xFFEFF1F4),
       backgroundColor: const Color(0xFFFFFFFF),
       errorColor: const Color(0xFFB00020),
       cursorColor: primaryColor,
-      // typography: Typography(),
       buttonTheme: _buttonThemeData(colorScheme),
       dialogTheme: _dialogTheme(),
       cardTheme: _cardTheme(),
@@ -183,28 +167,6 @@ class CoustomTheme {
       margin: EdgeInsets.all(0),
     );
   }
-
-  // static CupertinoThemeData _buildCupertinoTheme(CupertinoThemeData base) {
-  //   return base.copyWith(
-  //     textTheme: _buildCupertinotextTheme(CupertinoTextThemeData()),
-  //     primaryColor: HexColor(globals.primaryRiderColorString),
-  //   );
-  // }
-
-  // static CupertinoTextThemeData _buildCupertinotextTheme(CupertinoTextThemeData base) {
-  //   final fontName = globals.fontName;
-  //   return base.copyWith(
-  //     actionTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     dateTimePickerTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     navActionTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     navLargeTitleTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     pickerTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     navTitleTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     tabLabelTextStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     textStyle: base.textStyle.copyWith(fontFamily: fontName),
-  //     primaryColor: HexColor(globals.primaryRiderColorString),
-  //   );
-  // }
 }
 
 class HexColor extends Color {

@@ -376,7 +376,6 @@ class _MyWalletState extends State<MyWallet> {
             child: Padding(
               padding: const EdgeInsets.only(right: 12, left: 12),
               child: Container(
-                // height: 256,
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(12),

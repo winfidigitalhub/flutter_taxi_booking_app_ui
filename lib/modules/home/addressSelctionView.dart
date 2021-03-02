@@ -169,7 +169,6 @@ class AddressSelctionView extends StatelessWidget {
                                   SizedBox(
                                     height: 24,
                                     child: TextField(
-                                      // controller: emailController,
                                       maxLines: 1,
                                       style: Theme.of(context).textTheme.subtitle2,
                                       onChanged: (String txt) {},

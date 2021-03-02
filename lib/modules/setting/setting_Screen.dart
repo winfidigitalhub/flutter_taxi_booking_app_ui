@@ -297,14 +297,7 @@ class _SettingScreenState extends State<SettingScreen> {
           InkWell(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => VehicalManagement(),
-              //   ),
-              // );
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(right: 10, left: 14, top: 8, bottom: 8),
               child: Row(
@@ -336,14 +329,7 @@ class _SettingScreenState extends State<SettingScreen> {
           InkWell(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => VehicalManagement(),
-              //   ),
-              // );
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(right: 10, left: 14, top: 8, bottom: 8),
               child: Row(
@@ -355,7 +341,7 @@ class _SettingScreenState extends State<SettingScreen> {
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).textTheme.headline6.color,
                           ),
-                          overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Expanded(child: SizedBox()),
@@ -378,14 +364,7 @@ class _SettingScreenState extends State<SettingScreen> {
           InkWell(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => VehicalManagement(),
-              //   ),
-              // );
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(right: 10, left: 14, top: 8, bottom: 8),
               child: Row(
@@ -490,14 +469,7 @@ class _SettingScreenState extends State<SettingScreen> {
           InkWell(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => VehicalManagement(),
-              //   ),
-              // );
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(right: 10, left: 14, top: 8, bottom: 8),
               child: Row(
@@ -529,14 +501,7 @@ class _SettingScreenState extends State<SettingScreen> {
           InkWell(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => DocmanagementScreen(),
-              //   ),
-              // );
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(right: 10, left: 14, top: 8, bottom: 8),
               child: Row(

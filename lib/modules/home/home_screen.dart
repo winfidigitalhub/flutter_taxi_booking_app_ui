@@ -67,13 +67,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     carPointTwo = ConstanceData.getCarTwoPolyLineList();
     carPointThree = ConstanceData.getCarThreePolyLineList();
     carPointFour = ConstanceData.getCarFourPolyLineList();
-    // carPointFive = ConstanceData.getCarFivePolyLineList();
     poliList = ConstanceData.getRoutePolyLineList();
     Timer(Duration(milliseconds: next(1200, 4000)), carOnePin);
     Timer(Duration(milliseconds: next(1200, 4000)), carTwoPin);
     Timer(Duration(milliseconds: next(1200, 4000)), carThreePin);
     Timer(Duration(milliseconds: next(1200, 4000)), carFourPin);
-    // Timer(Duration(milliseconds: next(1200, 4000)), carFivePin);
   }
 
   Future carOnePin() async {
@@ -116,23 +114,17 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     Timer(Duration(milliseconds: next(1200, 4000)), carFourPin);
   }
 
-  // Future carFivePin() async {
-  //   if (carFiveIndex + 1 < carPointFive.length) {
-  //     carFiveIndex += 1;
-  //   } else {
-  //     carFiveIndex = 0;
-  //   }
-  //   if (mounted) setState(() {});
-  //   Timer(Duration(milliseconds: next(1200, 4000)), carFivePin);
-  // }
-
   Map<MarkerId, Marker> getMarkerList(BuildContext context) {
     Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
     if (carMapBitmapDescriptor != null) {
       for (var i = 0; i < 4; i++) {
         LatLng startPoint = i == 0
             ? carPointOne[carOneIndex]
-            : i == 1 ? carPointTwo[carTwoIndex] : i == 2 ? carPointThree[carThreeIndex] : carPointFour[carFourIndex];
+            : i == 1
+                ? carPointTwo[carTwoIndex]
+                : i == 2
+                    ? carPointThree[carThreeIndex]
+                    : carPointFour[carFourIndex];
         LatLng lastPoint = i == 0
             ? carPointOne[carOneIndex - 1 == -1 ? carPointOne.length - 1 : carOneIndex - 1]
             : i == 1
@@ -196,8 +188,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     setMakerPinSize(context);
-    // polylineList.clear();
-    // _carPinInitState();
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: SizedBox(
@@ -221,33 +212,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 tilt: 30.0,
                 zoom: 16,
               ),
-              onCameraMoveStarted: () {
-                // if (clipOvalController.status == AnimationStatus.completed) {
-                //   clipOvalController.reverse();
-                // }
-              },
-
-              // mapType: mapIndex.index != 2 ? MapType.normal : MapType.hybrid,
+              onCameraMoveStarted: () {},
               mapType: MapType.normal,
-              // mapType: ConstanceData.isLowSpecMobile() ? MapType.terrain : MapType.normal,
               markers: Set<Marker>.of(getMarkerList(context).values),
-              onCameraMove: (CameraPosition position) {
-                // print(position.zoom);
-                // liveZoomLevel = position.zoom;
-                // if (position.target != null) {
-                //   mapCenterlocation = GeoPoint(
-                //     position.target.latitude,
-                //     position.target.longitude,
-                //   );
-                //   _mapIdleSubscription?.cancel();
-                //   _mapIdleSubscription = Future.delayed(Duration(milliseconds: 1000)).asStream().listen((_) {
-                //     riderTripsBloc.setCameraIdle(LatLng(mapCenterlocation.latitude, mapCenterlocation.longitude));
-                //   });
-                //   if (mapCenterlocation != null && mapCenterlocation.latitude != null && mapCenterlocation.longitude != null) {
-                //     riderTripsBloc.setMapCenterLatlong(LatLng(mapCenterlocation.latitude, mapCenterlocation.longitude), context);
-                //   }
-                // }
-              },
+              onCameraMove: (CameraPosition position) {},
               polylines: Set<Polyline>.of(getPolilineData().values),
               onCameraIdle: () {},
               compassEnabled: false,

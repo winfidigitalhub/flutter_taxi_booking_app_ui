@@ -3,10 +3,7 @@ import 'package:my_cab/constance/constance.dart' as constance;
 class AppLocalizations {
   static String of(String text, {String ignoreLanguageCode: 'en'}) {
     String myLocale = constance.locale;
-    // if (myLocale.languageCode != '' &&
-    //     myLocale.languageCode != 'en' &&
-    //     (myLocale.languageCode == 'fr' || myLocale.languageCode == 'ar') &&
-    //     ignoreLanguageCode != myLocale.languageCode) {
+
     if (constance.allTextData != null && constance.allTextData.allText.length > 0) {
       var newtext = '';
       int index = constance.allTextData.allText.indexWhere((note) => note.textId == text);
@@ -32,8 +29,4 @@ class AppLocalizations {
       return text;
     }
   }
-  // else {
-  //   return text;
-  // }
-  //}
 }

@@ -53,29 +53,4 @@ class MySharedPreferences {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt(ConstanceData.LAST_PDF_Time, time);
   }
-
-  // Future<List<Predictions>> getSearchListData() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   if (prefs.getString(ConstanceData.PreviousSearch) == null) {
-  //     await prefs.setString(ConstanceData.PreviousSearch, jsonEncode(PreviousSearch(searchList: List<Predictions>())));
-  //   }
-  //   var dataTxt = prefs.getString(ConstanceData.PreviousSearch);
-  //   if (dataTxt != '') {
-  //     PreviousSearch previousSearch = PreviousSearch.fromJson(jsonDecode(dataTxt));
-  //     return previousSearch.searchList;
-  //   } else {
-  //     return List<Predictions>();
-  //   }
-  // }
-
-  // Future setSearchList(List<Predictions> searchDataList) async {
-  //   if (searchDataList != null && searchDataList.length > 0) {
-  //     final dataTxt = jsonEncode(PreviousSearch(searchList: searchDataList));
-  //     SharedPreferences prefs = await SharedPreferences.getInstance();
-  //     prefs.setString(ConstanceData.PreviousSearch, dataTxt);
-  //   } else {
-  //     SharedPreferences prefs = await SharedPreferences.getInstance();
-  //     prefs.setString(ConstanceData.PreviousSearch, jsonEncode(PreviousSearch(searchList: List<Predictions>())));
-  //   }
-  // }
 }

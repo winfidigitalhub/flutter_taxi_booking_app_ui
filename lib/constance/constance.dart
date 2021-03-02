@@ -42,51 +42,8 @@ class ConstanceData {
   static final startmapPin = BaseImageUrl + "start_pin.png";
   static final endmapPin = BaseImageUrl + "end_pin.png";
 
-/*
- * Calculates the SW and NE corners of a bounding box around a center point for a given radius;
- *
- * @param {Object} center The center given as .latitude and .longitude
- * @param {number} radius The radius of the box (in kilometers)
- * @return {Object} The SW and NE corners given as .swCorner and .neCorner
- */
-  // static List<GeoPoint> boundingBoxCoordinates(GeoPoint center, double radius) {
-  //   var list = List<GeoPoint>();
-  //   var kmPerDegreeLatitude = 110.574;
-  //   var latDegrees = radius / kmPerDegreeLatitude;
-  //   var latitudeNorth = math.min(90, center.latitude + latDegrees);
-  //   var latitudeSouth = math.max(-90, center.latitude - latDegrees);
-  //   // calculate longitude based on current latitude
-  //   // var longDegsNorth = metersToLongitudeDegrees(radius, latitudeNorth);
-  //   // var longDegsSouth = metersToLongitudeDegrees(radius, latitudeSouth);
-  //   var longDegsNorth = math.min(180, center.longitude + latDegrees);
-  //   var longDegsSouth = math.max(-180, center.longitude - latDegrees);
-  //   // var longDegs = math.max(longDegsNorth, longDegsSouth);
-
-  //   // var lesserGeopoint = GeoPoint(
-  //   //     latitudeSouth, wrapLongitude(center.longitude - longDegsSouth));
-  //   // var greaterGeopoint = GeoPoint(
-  //   //     latitudeNorth, wrapLongitude(center.longitude + longDegsNorth));
-  //   var lesserGeopoint = GeoPoint(latitudeSouth, longDegsSouth);
-  //   var greaterGeopoint = GeoPoint(latitudeNorth, longDegsNorth);
-  //   list.add(lesserGeopoint);
-  //   list.add(greaterGeopoint);
-  //   list.add(GeoPoint(greaterGeopoint.latitude, lesserGeopoint.longitude));
-  //   list.add(GeoPoint(lesserGeopoint.latitude, greaterGeopoint.longitude));
-
-  //   // print(newCalculateDistance(list[0], list[1]));
-  //   return list;
-  // }
-
-/*
- * Calculates the number of degrees a given distance is at a given latitude.
- *
- * @param {number} distance The distance to convert.
- * @param {number} latitude The latitude at which to calculate.
- * @return {number} The number of degrees the distance corresponds to.
- */
   static double metersToLongitudeDegrees(distance, latitude) {
     var earthEqRadius = 6378137.0;
-    // this is a super, fancy magic number that the GeoFire lib can explain (maybe)
     var e2 = 0.00669447819799;
     var epsilon = 1e-12;
     var radians = degreesToRadians(latitude);
@@ -96,16 +53,9 @@ class ConstanceData {
     if (deltaDeg < epsilon) {
       return distance > 0 ? 360 : 0;
     }
-    // else
     return math.min(360, distance / deltaDeg);
   }
 
-/*
- * Wraps the longitude to [-180,180].
- *
- * @param {number} longitude The longitude to wrap.
- * @return {number} longitude The resulting longitude.
- */
   static double wrapLongitude(double longitude) {
     if (longitude <= 180 && longitude >= -180) {
       return longitude;
@@ -114,33 +64,8 @@ class ConstanceData {
     if (adjusted > 0) {
       return (adjusted % 360) - 180;
     }
-    // else
     return 180 - (-adjusted % 360);
   }
-
-  /*
- * Calculates the distance, in kilometers, between two locations, via the
- * Haversine formula. Note that this is approximate due to the fact that
- * the Earth's radius varies between 6356.752 km and 6378.137 km.
- *
- * @param {Object} location1 The first location given as .latitude and .longitude
- * @param {Object} location2 The second location given as .latitude and .longitude
- * @return {number} The distance, in kilometers, between the inputted locations.
- */
-  // static newCalculateDistance(GeoPoint location1, GeoPoint location2) {
-  //   const radius = 6371; // Earth's radius in kilometers
-  //   var latDelta = degreesToRadians(location2.latitude - location1.latitude);
-  //   var lonDelta = degreesToRadians(location2.longitude - location1.longitude);
-  //   var a = (math.sin(latDelta / 2) * math.sin(latDelta / 2)) +
-  //       (math.cos(degreesToRadians(location1.latitude)) *
-  //           math.cos(degreesToRadians(location2.latitude)) *
-  //           math.sin(lonDelta / 2) *
-  //           math.sin(lonDelta / 2));
-
-  //   var c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a));
-  //   // print(radius * c);
-  //   return radius * c * 1000;
-  // }
 
   static double degreesToRadians(double number) {
     return number * math.pi / 180;
@@ -160,10 +85,8 @@ class ConstanceData {
       var epoint = math.Point(lastPoint.latitude, lastPoint.longitude);
       var newpoint = math.Point(epoint.x - spoint.x, epoint.y - spoint.y);
       double angle = -math.atan2(newpoint.x, newpoint.y);
-      // print(angle);
       var bearingDegrees = (angle * (180.0 / math.pi)) - 90; // convert to degrees
       bearingDegrees = (bearingDegrees > 0.0 ? bearingDegrees : (360.0 + bearingDegrees));
-      // print(bearingDegrees);
       return bearingDegrees;
     } else {
       return 0.0;
@@ -804,78 +727,3 @@ class ConstanceData {
 String locale = "en";
 
 AllTextData allTextData;
-
-// bool pointInPolygon(List<LatLng> polygonPath, LatLng coordinates) {
-//   var x = coordinates.longitude, y = coordinates.longitude;
-
-//   var inside = false;
-//   for (var i = 0, j = polygonPath.length - 1; i < polygonPath.length; j = i++) {
-//     var xi = polygonPath[i].latitude, yi = polygonPath[i].longitude;
-//     var xj = polygonPath[j].latitude, yj = polygonPath[j].longitude;
-
-//     var intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-//     if (intersect) inside = !inside;
-//   }
-//   return inside;
-// }
-
-// bool isPointInPolygon(LatLng p, List<LatLng> polygon) {
-//   double minX = polygon[0].latitude;
-//   double maxX = polygon[0].latitude;
-//   double minY = polygon[0].longitude;
-//   double maxY = polygon[0].longitude;
-//   for (int i = 1; i < polygon.length; i++) {
-//     LatLng q = polygon[i];
-//     minX = math.min(q.latitude, minX);
-//     maxX = math.min(q.latitude, maxX);
-//     minY = math.min(q.longitude, minY);
-//     maxY = math.min(q.longitude, maxY);
-//   }
-
-//   if (p.latitude < minX || p.latitude > maxX || p.longitude < minY || p.longitude > maxY) {
-//     return false;
-//   }
-
-//   bool inside = false;
-//   for (int i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-//     if ((polygon[i].longitude > p.longitude) != (polygon[j].longitude > p.longitude) &&
-//         p.latitude <
-//             (polygon[j].latitude - polygon[i].latitude) * (p.longitude - polygon[i].longitude) / (polygon[j].longitude - polygon[i].longitude) +
-//                 polygon[i].latitude) {
-//       inside = !inside;
-//     }
-//   }
-
-//   return inside;
-// }
-
-//   Map<PolygonId, Polygon> getPolygonData() {
-//   List<LatLng> pointss = [
-//     // LatLng(1.0,1.0),
-//     LatLng(2.5, 3.5),
-//     LatLng(1.0, 3.0),
-//     LatLng(2.5, 4.0),
-//     LatLng(4.0, 2.0),
-//     LatLng(2.5, 0),
-//   ];
-
-//   LatLng g = LatLng(3, 3);
-//   print(pointInPolygon(pointss, g));
-//   print(getlet(pointss, g));
-//   print(isPointInPolygon(g, pointss));
-//   Map<PolygonId, Polygon> _polygons = <PolygonId, Polygon>{};
-//   final PolygonId polygonId = PolygonId('polygonId');
-//   final Polygon polygon = Polygon(
-//     polygonId: polygonId,
-//     points: pointss,
-//     consumeTapEvents: true,
-//     strokeColor: HexColor(globals.primaryDriverColorString),
-//     strokeWidth: 5,
-//     fillColor: Colors.transparent,
-//     onTap: () {},
-//     geodesic: true,
-//   );
-//   _polygons.addAll({polygonId: polygon});
-
-//   return _polygons;
-// }

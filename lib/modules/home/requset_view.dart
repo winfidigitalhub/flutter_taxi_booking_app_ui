@@ -176,7 +176,7 @@ class _RequsetViewState extends State<RequsetView> {
                                           child: Text(
                                             AppLocalizations.of('Promo code'),
                                             style: Theme.of(context).textTheme.caption.copyWith(
-                                                  // fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.bold,
                                                   color: Theme.of(context).disabledColor,
                                                 ),
                                           ),
@@ -204,7 +204,6 @@ class _RequsetViewState extends State<RequsetView> {
                                           child: Text(
                                             AppLocalizations.of('Options'),
                                             style: Theme.of(context).textTheme.caption.copyWith(
-                                                  // fontWeight: FontWeight.bold,
                                                   color: Theme.of(context).disabledColor,
                                                 ),
                                           ),
@@ -302,7 +301,6 @@ class _RequsetViewState extends State<RequsetView> {
             child: Padding(
               padding: const EdgeInsets.only(right: 12, left: 12),
               child: Container(
-                // height: 256,
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(12),
