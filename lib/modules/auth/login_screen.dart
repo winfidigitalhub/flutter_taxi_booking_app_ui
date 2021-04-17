@@ -1,5 +1,6 @@
-import 'package:country_pickers/country.dart';
-import 'package:country_pickers/country_pickers.dart';
+// import 'package:country_pickers/country.dart';
+// import 'package:country_pickers/country_pickers.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,16 +16,19 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  Country _selectedCountry = CountryPickerUtils.getCountryByIsoCode('US');
+  // Country _selectedCountry = CountryPickerUtils.getCountryByIsoCode('US');
   bool isSignUp = true;
   String phoneNumber = '';
+  String countryCode = "+91";
 
   @override
   void initState() {
     super.initState();
-    animationController = new AnimationController(vsync: this, duration: Duration(milliseconds: 1000));
+    animationController = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
     animationController..forward();
   }
 
@@ -34,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
-        constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height, minWidth: MediaQuery.of(context).size.width),
+        constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height,
+            minWidth: MediaQuery.of(context).size.width),
         child: Stack(
           children: <Widget>[
             SingleChildScrollView(
@@ -59,8 +65,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                         0.0,
                                         160 *
                                                 (1.0 -
-                                                    (AlwaysStoppedAnimation(Tween(begin: 0.4, end: 1.0)
-                                                                .animate(CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn)))
+                                                    (AlwaysStoppedAnimation(Tween(
+                                                                    begin: 0.4,
+                                                                    end: 1.0)
+                                                                .animate(CurvedAnimation(
+                                                                    parent:
+                                                                        animationController,
+                                                                    curve: Curves
+                                                                        .fastOutSlowIn)))
                                                             .value)
                                                         .value) -
                                             16,
@@ -75,8 +87,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                         0.0,
                                         160 *
                                             (1.0 -
-                                                (AlwaysStoppedAnimation(Tween(begin: 0.8, end: 1.0)
-                                                            .animate(CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn)))
+                                                (AlwaysStoppedAnimation(Tween(
+                                                                begin: 0.8,
+                                                                end: 1.0)
+                                                            .animate(CurvedAnimation(
+                                                                parent:
+                                                                    animationController,
+                                                                curve: Curves
+                                                                    .fastOutSlowIn)))
                                                         .value)
                                                     .value),
                                         0.0),
@@ -86,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     ),
                                   ),
                                   Positioned(
-                                    bottom: (MediaQuery.of(context).size.height / 8),
+                                    bottom:
+                                        (MediaQuery.of(context).size.height /
+                                            8),
                                     top: 0,
                                     left: 0,
                                     right: 0,
@@ -96,17 +116,24 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                         height: 120,
                                         child: AnimatedBuilder(
                                           animation: animationController,
-                                          builder: (BuildContext context, Widget child) {
+                                          builder: (BuildContext context,
+                                              Widget child) {
                                             return Transform(
-                                              transform: new Matrix4.translationValues(
+                                              transform: new Matrix4
+                                                      .translationValues(
                                                   0.0,
                                                   80 *
                                                       (1.0 -
                                                           (AlwaysStoppedAnimation(
-                                                            Tween(begin: 0.0, end: 1.0).animate(
+                                                            Tween(
+                                                                    begin: 0.0,
+                                                                    end: 1.0)
+                                                                .animate(
                                                               CurvedAnimation(
-                                                                parent: animationController,
-                                                                curve: Curves.fastOutSlowIn,
+                                                                parent:
+                                                                    animationController,
+                                                                curve: Curves
+                                                                    .fastOutSlowIn,
                                                               ),
                                                             ),
                                                           ).value)
@@ -114,10 +141,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                                   0.0),
                                               child: Card(
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(36.0),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          36.0),
                                                 ),
                                                 elevation: 12,
-                                                child: Image.asset(ConstanceData.appIcon),
+                                                child: Image.asset(
+                                                    ConstanceData.appIcon),
                                               ),
                                             );
                                           },
@@ -144,7 +174,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: (MediaQuery.of(context).size.height / 2) - (MediaQuery.of(context).size.height < 600 ? 124 : 86),
+                      height: (MediaQuery.of(context).size.height / 2) -
+                          (MediaQuery.of(context).size.height < 600 ? 124 : 86),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -159,7 +190,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   child: InkWell(
                                     focusColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    splashColor: Theme.of(context).primaryColor.withOpacity(0.2),
+                                    splashColor: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2),
                                     onTap: () {
                                       setState(() {
                                         isSignUp = true;
@@ -169,25 +202,38 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.all(4.0),
                                             child: Text(
                                               AppLocalizations.of('Sign Up'),
-                                              style: Theme.of(context).textTheme.headline6.copyWith(
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline6
+                                                  .copyWith(
                                                     fontWeight: FontWeight.bold,
-                                                    color: isSignUp ? Theme.of(context).textTheme.headline6.color : Theme.of(context).disabledColor,
+                                                    color: isSignUp
+                                                        ? Theme.of(context)
+                                                            .textTheme
+                                                            .headline6
+                                                            .color
+                                                        : Theme.of(context)
+                                                            .disabledColor,
                                                   ),
                                             ),
                                           ),
                                           isSignUp
                                               ? Padding(
-                                                  padding: const EdgeInsets.all(0.0),
+                                                  padding:
+                                                      const EdgeInsets.all(0.0),
                                                   child: Card(
                                                     elevation: 0,
-                                                    color: Theme.of(context).primaryColor,
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
                                                     child: SizedBox(
                                                       height: 6,
                                                       width: 48,
@@ -204,7 +250,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   child: InkWell(
                                     focusColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    splashColor: Theme.of(context).primaryColor.withOpacity(0.2),
+                                    splashColor: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.2),
                                     onTap: () {
                                       setState(() {
                                         isSignUp = false;
@@ -214,25 +262,38 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.all(4.0),
                                             child: Text(
                                               AppLocalizations.of('Sign In'),
-                                              style: Theme.of(context).textTheme.headline6.copyWith(
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline6
+                                                  .copyWith(
                                                     fontWeight: FontWeight.bold,
-                                                    color: !isSignUp ? Theme.of(context).textTheme.headline6.color : Theme.of(context).disabledColor,
+                                                    color: !isSignUp
+                                                        ? Theme.of(context)
+                                                            .textTheme
+                                                            .headline6
+                                                            .color
+                                                        : Theme.of(context)
+                                                            .disabledColor,
                                                   ),
                                             ),
                                           ),
                                           !isSignUp
                                               ? Padding(
-                                                  padding: const EdgeInsets.all(0.0),
+                                                  padding:
+                                                      const EdgeInsets.all(0.0),
                                                   child: Card(
                                                     elevation: 0,
-                                                    color: Theme.of(context).primaryColor,
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
                                                     child: SizedBox(
                                                       height: 6,
                                                       width: 48,
@@ -254,7 +315,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               alignment: Alignment.topCenter,
                               reverseDuration: Duration(milliseconds: 420),
                               duration: Duration(milliseconds: 420),
-                              crossFadeState: !isSignUp ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                              crossFadeState: !isSignUp
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
                               firstCurve: Curves.fastOutSlowIn,
                               secondCurve: Curves.fastOutSlowIn,
                               sizeCurve: Curves.fastOutSlowIn,
@@ -364,7 +427,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 ),
                 Text(
                   AppLocalizations.of('Connect with facebook'),
-                  style: Theme.of(context).textTheme.subtitle1.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -432,39 +496,30 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         ),
         child: Row(
           children: <Widget>[
-            InkWell(
-              onTap: _openCountryPickerDialog,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.6,
-                          color: Theme.of(context).dividerColor,
-                        ),
-                      ),
-                      child: CountryPickerUtils.getDefaultFlagImage(_selectedCountry),
-                    ),
-                    SizedBox(width: 8.0),
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Theme.of(context).dividerColor,
-                    ),
-                    SizedBox(width: 8.0),
-                    Container(
-                      color: Theme.of(context).dividerColor,
-                      height: 32,
-                      width: 1,
-                    )
-                  ],
-                ),
+            SizedBox(
+              width: 80,
+              height: 60,
+              child: CountryCodePicker(
+                onChanged: (e) {
+                  print(e.toLongString());
+                  print(e.name);
+                  print(e.code);
+                  print(e.dialCode);
+                  setState(() {
+                    countryCode = e.dialCode;
+                  });
+                },
+                initialSelection: 'भारत',
+                showFlagMain: true,
+                showFlag: true,
+                favorite: ['+91','भारत'],
               ),
             ),
-            Text("+${_selectedCountry.phoneCode} "),
+            Container(
+              color: Theme.of(context).dividerColor,
+              height: 32,
+              width: 1,
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 0, right: 16),
@@ -482,8 +537,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     decoration: new InputDecoration(
                       errorText: null,
                       border: InputBorder.none,
-                      hintText: AppLocalizations.of("Phone Number"),
-                      hintStyle: TextStyle(color: Theme.of(context).disabledColor),
+                      hintText: AppLocalizations.of(" Phone Number"),
+                      hintStyle:
+                          TextStyle(color: Theme.of(context).disabledColor),
                     ),
                     keyboardType: TextInputType.phone,
                     inputFormatters: <TextInputFormatter>[],
@@ -519,64 +575,19 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             },
             child: Center(
               child: Text(
-                isSignUp ? AppLocalizations.of('Sign Up') : AppLocalizations.of('Next'),
-                style: Theme.of(context).textTheme.subtitle1.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                isSignUp
+                    ? AppLocalizations.of('Sign Up')
+                    : AppLocalizations.of('Next'),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  void _openCountryPickerDialog() {
-    Widget _buildDialogItem(Country country) => Row(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0.6,
-                  color: Theme.of(context).dividerColor,
-                ),
-              ),
-              child: CountryPickerUtils.getDefaultFlagImage(country),
-            ),
-            SizedBox(width: 8.0),
-            Expanded(
-              child: Text(
-                getCountryString(country.name),
-                maxLines: 3,
-                style: TextStyle(),
-              ),
-            ),
-            Container(
-              child: Text(
-                "+${country.phoneCode}",
-                textAlign: TextAlign.end,
-                style: TextStyle(),
-              ),
-            ),
-          ],
-        );
-    showDialog(
-        context: context,
-        builder: (context) => CountryPickerDialog(
-              titlePadding: EdgeInsets.all(8.0),
-              searchCursorColor: Theme.of(context).primaryColor,
-              searchInputDecoration: InputDecoration(hintText: AppLocalizations.of('Search...')),
-              isSearchable: true,
-              title: Text(
-                AppLocalizations.of('Select your country.'),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onValuePicked: (Country country) => setState(() {
-                _selectedCountry = country;
-              }),
-              itemBuilder: _buildDialogItem,
-            ));
   }
 
   String getCountryString(String str) {
