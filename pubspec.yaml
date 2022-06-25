@@ -28,7 +28,7 @@ dependencies:
   google_fonts: ^1.1.0
   flutter_page_indicator: ^0.0.3
   shared_preferences: ^0.5.7+3
-  # country_pickers: any
+  # country_pickers: anyr
   country_code_picker: ^1.7.0
   font_awesome_flutter: ^8.8.1
   google_maps_flutter: ^0.5.28+1
